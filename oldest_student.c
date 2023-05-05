@@ -6,17 +6,15 @@
 struct student findOldestStudent(struct student *students, int numOfStudents) {
     struct student oldestStudent = students[0];
     for (int i = 1; i < numOfStudents; i++) {
-        if (oldestStudent.birthdate.ate > students[i].birthdate.ate) {
+        if (students[i].birthdate.ate > oldestStudent.birthdate.ate) {
             oldestStudent = students[i];
-            continue;;
-        }
-        if (oldestStudent.birthdate.thd > students[i].birthdate.thd) {
+        } else if ((students[i].birthdate.ate == oldestStudent.birthdate.ate)
+        && (students[i].birthdate.thd > oldestStudent.birthdate.thd)) {
             oldestStudent = students[i];
-            continue;;
-        }
-        if (oldestStudent.birthdate.bir > students[i].birthdate.bir) {
-            oldestStudent = students[i];
-            continue;;
+        } else if ((students[i].birthdate.ate == oldestStudent.birthdate.ate)
+        && (students[i].birthdate.thd == oldestStudent.birthdate.thd)
+        && (students[i].birthdate.bir > oldestStudent.birthdate.bir)){
+            oldestStudent = students[i];  
         }
     }
     return oldestStudent;
